@@ -25,7 +25,7 @@ Yunzhi Yaoらの論文
 f_{\theta_{e}}(x) = \left\{
     \begin{array}{cl}
     y_{e} & \mathrm{if} \hspace{1mm} x \in I(x_{e}, y_{e}) \\
-    f_{\theta_{e}}(x) & \mathrm{if} \hspace{1mm} x \in O(x_{e}, y_{e}) \\
+    f_{\theta_{e}}(x) & \mathrm{if} \hspace{1mm} x \in O(x_{e}, y_{e})
     \end{array}
 \right.
 ```
