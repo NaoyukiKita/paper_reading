@@ -19,38 +19,46 @@ Yunzhi Yaoらの論文
 
 ## 問題定義
 
-編集前のモデルを$` f_{\theta} `$とする($` \theta `$はパラメタ). この時, $` f_{\theta}(x_{e}) \neq y_{e} `$と満たす入出力のペア(x_{e}, y_{e})(編集記述子, edit descriptor)について, $` f_{\theta_{e}}(x_{e}) = y_{e} `$を満たすパラメタ$` \theta_{e} `$が欲しい. ただし, 他のサンプルにおける動作に影響を与えてはならない.
+編集前のモデルを$f_{\theta}$とする($\theta$はパラメタ). この時, $f_{\theta}(x_{e}) \neq y_{e}$と満たす入出力のペア($x_{e}, y_{e}$)(編集記述子, edit descriptor)について, $f_{\theta_{e}}(x_{e}) = y_{e}$を満たすパラメタ$\theta_{e}$が欲しい. ただし, 他のサンプルにおける動作に影響を与えてはならない.
 
-```math
+$$
+\begin{align}
 f_{\theta_{e}}(x) = \left\{
     \begin{array}{cl}
     y_{e} & \mathrm{if} \hspace{1mm} x \in I(x_{e}, y_{e}) \\
     f_{\theta_{e}}(x) & \mathrm{if} \hspace{1mm} x \in O(x_{e}, y_{e})
     \end{array}
 \right.
-```
+\end{align}
+$$
 
-ここで, $` I(x_{e}, y_{e}) `$は編集範囲(editing scope)を示し, $` (x_{e}, y_{e}) `$に関連した入出力ペアの集合で, $` O(x_{e}, y_{e}) `$はそうでないものの集合.
+ここで, $I(x_{e}, y_{e})$は編集範囲(editing scope)を示し, $(x_{e}, y_{e})$に関連した入出力ペアの集合で, $O(x_{e}, y_{e})$はそうでないものの集合.
 
-編集後のモデル$` f_{\theta_{e}} `$は, 以下の3つの性質を満たす必要がある:
+編集後のモデル$f_{\theta_{e}}$は, 以下の3つの性質を満たす必要がある:
 
-1. 信頼性(Reliability): $` x'_{e} `$が与えられた時, $` y'_{e} `$を返すか？
+1. 信頼性(Reliability): $x'_{e}$が与えられた時, $y'_{e}$を返すか？
 
-```math
+$$
+\begin{align}
 \mathbb{E}_{(x'_{e}, y'_{e}) \sim \{(x_{e}, y_{e})\}} \mathbb{1} \left\{ \mathrm{argmax}_{y} f_{\theta_{e}}(y | x'_{e}) = y'_{e} \right\}
-```
+\end{align}
+$$
 
-2. 汎化性能(Generalization): $` (x_{e}, y_{e}) `$と等価な(言い換えただけ, など)入出力セット$` (x"_{e}, y"_{e}) `$ではどうか？
+2. 汎化性能(Generalization): $(x_{e}, y_{e})$と等価な(言い換えただけ, など)入出力セット$(x"_{e}, y"_{e})$ではどうか？
 
-```math
+$$
+\begin{align}
 \mathbb{E}_{(x"_{e}, y"_{e}) \sim N(x_{e}, y_{e})} \mathbb{1} \left\{ \mathrm{argmax}_{y} f_{\theta_{e}}(y | x"_{e}) = y"_{e} \right\}
-```
+\end{align}
+$$
 
 3. 局所性(Locality):  無関係な入出力セットは変わっていないか？
 
-```math
+$$
+\begin{align}
 \mathbb{E}_{(x'_{e}, y'_{e}) \sim O(x_{e}, y_{e})} \mathbb{1} \left\{ f_{\theta_{e}}(y | x'_{e}) = f_{\theta}(y | x'_{e}) \right\}
-```
+\end{align}
+$$
 
 ## 現在の手法
 
@@ -77,9 +85,11 @@ f_{\theta_{e}}(x) = \left\{
   - 関係性の逆転：「富士山」と「日本一高い山」など、一対一の関係性を示した文の主語と述語を反転させる(?).
   - One-hop：仮に「日本一高い山は？」の答えを「富士山」から「天保山」に編集した場合、「日本一高い山はどこにある？」の答えを「静岡県と山梨県の県境」から「大阪府」に変更しなければならない
 
-```math
+$$
+\begin{align}
 \mathbb{E}_{(x'_{e}, y'_{e}) \sim P(x_{e}, y_{e})} \mathbb{1} \left\{ \mathrm{argmax}_{y} f_{\theta_{e}}(y | x'_{e}) = y'_{e} \right\}
-```
+\end{align}
+$$
 
 - 局所性(Locality, より包括的な評価)：ZsREとCounterFactで異なる評価方法を統一した
   - Other Relations：更新された主題の他の属性は編集後も変更されないべきである(?).
@@ -97,10 +107,10 @@ f_{\theta_{e}}(x) = \left\{
 
 ## 英単語
 
-- impeccable 罪を犯さない、罪のない、欠点のない、申し分のない
-- commendable ほめるに足る、立派な、感心な
-- ramification 分枝、分岐、支流、(派生する)効果、結果
-- sway 左右にゆする、左右する、支配する、統治する
-- necessitate 必要とする、要する、必要とする、余儀なくさせる
-- encompass 取り囲む、取り巻く、包囲する、包含する、含む、もたらす
-- paramount 最高の、主要な、最高権威を有する
+- impeccable 罪を犯さない 罪のない 欠点のない 申し分のない
+- commendable ほめるに足る 立派な 感心な
+- ramification 分枝 分岐 支流 (派生する)効果 結果
+- sway 左右にゆする 左右する 支配する 統治する
+- necessitate 必要とする 要する 必要とする 余儀なくさせる
+- encompass 取り囲む 取り巻く 包囲する 包含する 含む もたらす
+- paramount 最高の 主要な 最高権威を有する
