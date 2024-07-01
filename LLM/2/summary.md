@@ -83,5 +83,5 @@ Fábio Perezらの論文
 - derail: 脱線させる 頓挫させる
 - punctuation: 句読点
 - inhibit: 妨げる 抑制する
-- susceptibel: 影響を受けやすい 感染しやすい
+- susceptible: 影響を受けやすい 感染しやすい
 - hamper: 妨げる
